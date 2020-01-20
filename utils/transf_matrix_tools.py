@@ -1,3 +1,10 @@
+""" File contains several functions for 3D transformation matrices 
+manipulations.
+
+2020-01-20 -- Omar Elmofty: Created file
+"""
+
+
 import numpy as np
 
 
