@@ -7,6 +7,7 @@ cloud alignment algorithm
 
 import numpy as np
 
+from camera_model import get_pfromy, transf_camtov
 
 def generate_p_lists(kps):
 	"""Function that generates 2 euclidean point cloud lists from pairs
