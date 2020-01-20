@@ -5,6 +5,7 @@ generation from incremental poses changes between camera frames
 """
 
 import numpy as np
+from tansf_matrix_tools import calc_exp_v2tov1
 
 
 def generate_trajectory(T_list,theta=0.0001):
@@ -13,8 +14,8 @@ def generate_trajectory(T_list,theta=0.0001):
 
     Args:
     	T_list: list containing pose changes at each time step, each
-    			pose change is 4x4 tranformation matrix
-    	theta: a paramter for rotating the generated trajectory in the
+    			pose change is 4x4 transformation matrix
+    	theta: a parameter for rotating the generated trajectory in the
     			x-y plane 
 
     Returns:
@@ -49,19 +50,19 @@ def generate_trajectory(T_list,theta=0.0001):
 def generate_trajectory_psuedo(T_list,theta=0.0001):
 	"""Function that accumulates pose changes from consecutive time
 	steps and generate the final trajectory. This function is for 
-	simulated measurments only and is used for testing
+	simulated measurements only and is used for testing
 
     Args:
     	T_list: list containing pose changes at each time step, each
-    			pose change is 4x4 tranformation matrix
-    	theta: a paramter for rotating the generated trajectory in the
+    			pose change is 4x4 transformation matrix
+    	theta: a parameter for rotating the generated trajectory in the
     			x-y plane 
 
     Returns:
         x: list of x positions at time step index k
         y: list of y positions at time step index k
-        T_list_new: list of transformation matrices from inital position
-        		to positon in time k
+        T_list_new: list of transformation matrices from initial position
+        		to position in time k
     """
     
     y = [0]
