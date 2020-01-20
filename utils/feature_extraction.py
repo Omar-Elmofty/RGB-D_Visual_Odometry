@@ -105,3 +105,38 @@ def extract_features(assoc_list,i,n_skip,num_features=1000 ,z_thres=5,direct='')
                                [z2],
                                [1]])})
     return kps,im1_name
+
+
+def generate_ground_truth_trajectory(path):
+    """Function that reads the ground truth data and generates the
+    ground truth trajectory
+
+    Args:
+        path: path to data-set
+    Returns:
+        t_true: an array of all the timesteps 
+        x_true: an array of the x positions for the ground truth 
+        y_true: an array of the y positions for the ground truth
+    """
+
+    path = path + "/groundtruth.txt"
+    f = open(path)
+    t_true = []
+    x_true = []
+    y_true = []
+
+    i=0
+    for line in f.readlines():
+        if i > 2:
+            line = line.split()
+            t_true.append(float(line[0]))
+            x_true.append(float(line[1]))
+            y_true.append(float(line[2]))
+        i +=1
+    f.close()
+
+    t_true = np.array(t_true)
+    x_true = np.array(x_true)
+    y_true = np.array(y_true)
+
+    return t_true, x_true, y_true
