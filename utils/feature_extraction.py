@@ -122,7 +122,7 @@ def generate_ground_truth_trajectory(path):
     path = path + "/groundtruth.txt"
     f = open(path)
     t_true = []
-    x_true = []
+    x_true = [] 
     y_true = []
 
     i=0
